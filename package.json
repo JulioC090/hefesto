@@ -2,6 +2,9 @@
   "name": "hefesto",
   "version": "0.0.1",
   "main": "./dist/index.js",
+  "bin": {
+    "hf": "./dist/index.js"
+  },
   "scripts": {
     "start": "node ./dist",
     "dev": "tsx watch ./src/index.ts",

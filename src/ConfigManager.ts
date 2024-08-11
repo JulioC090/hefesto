@@ -1,7 +1,8 @@
 import fs from 'node:fs';
+import path from 'node:path';
 
 export default class ConfigManager {
-  private static path: string = './config.json';
+  private static path: string = path.resolve(__dirname, 'config.json');
 
   static setPath(newPath: string) {
     this.path = newPath;

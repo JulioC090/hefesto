@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import ConfigManager from '@/ConfigManager';
 import extractRepo from '@/RepoExtractor';
 import { Command } from 'commander';
