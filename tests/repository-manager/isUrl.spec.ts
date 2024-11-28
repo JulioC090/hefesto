@@ -1,4 +1,4 @@
-import isUrl from '@/common/isUrl';
+import isUrl from '@/repository-manager/isUrl';
 import { describe, expect, it } from 'vitest';
 
 describe('isUrl', () => {

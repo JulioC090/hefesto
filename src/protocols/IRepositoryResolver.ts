@@ -1,4 +1,4 @@
-import { Repository } from '@/entities/Repository';
+import { Repository } from '@/repository-manager/Repository';
 
 export default interface IRepositoryResolver {
   resolve(repository: string): Promise<Repository | null>;

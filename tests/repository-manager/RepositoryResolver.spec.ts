@@ -1,13 +1,13 @@
-import isGitHubRepoAvailable from '@/common/isGitHubRepoAvailable';
-import isUrl from '@/common/isUrl';
-import RepositoryResolver from '@/core/RepositoryResolver';
 import IFileReader from '@/protocols/IFileReader';
 import IRepositoryExtractor from '@/protocols/IRepositoryExtractor';
 import IRepositoryResolver from '@/protocols/IRepositoryResolver';
+import isGitHubRepoAvailable from '@/repository-manager/isGitHubRepoAvailable';
+import isUrl from '@/repository-manager/isUrl';
+import RepositoryResolver from '@/repository-manager/RepositoryResolver';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-vi.mock('@/common/isGitHubRepoAvailable');
-vi.mock('@/common/isUrl');
+vi.mock('@/repository-manager/isGitHubRepoAvailable');
+vi.mock('@/repository-manager/isUrl');
 vi.mock('fs');
 vi.mock('@/protocols/IRepositoryExtractor');
 

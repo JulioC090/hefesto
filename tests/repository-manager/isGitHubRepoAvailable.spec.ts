@@ -1,4 +1,4 @@
-import isGitHubRepoAvailable from '@/common/isGitHubRepoAvailable';
+import isGitHubRepoAvailable from '@/repository-manager/isGitHubRepoAvailable';
 import { describe, expect, it } from 'vitest';
 
 describe('isGitHubRepoAvailable', () => {

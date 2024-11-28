@@ -1,9 +1,9 @@
-import isGitHubRepoAvailable from '@/common/isGitHubRepoAvailable';
-import isUrl from '@/common/isUrl';
-import { Repository } from '@/entities/Repository';
 import IFileReader from '@/protocols/IFileReader';
 import IRepositoryExtractor from '@/protocols/IRepositoryExtractor';
 import IRepositoryResolver from '@/protocols/IRepositoryResolver';
+import isGitHubRepoAvailable from '@/repository-manager/isGitHubRepoAvailable';
+import isUrl from '@/repository-manager/isUrl';
+import { Repository } from '@/repository-manager/Repository';
 import path from 'node:path';
 
 export default class RepositoryResolver implements IRepositoryResolver {
