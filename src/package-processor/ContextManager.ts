@@ -1,4 +1,6 @@
-export default class ContextManager {
+import IContextManager from '@/protocols/IContextManager';
+
+export default class ContextManager implements IContextManager {
   private localVariables: { [key: string]: number | string } = {};
   private exportedVariables: { [key: string]: number | string } = {};
   private exportedCommands: { [key: string]: (...args: string[]) => unknown } =
@@ -59,7 +61,7 @@ export default class ContextManager {
     this.currentPackage = packageName;
   }
 
-  getCurrentPackage(): string | null {
+  getCurrentPackage(): string {
     return this.currentPackage;
   }
 }

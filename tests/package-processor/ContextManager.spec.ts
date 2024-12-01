@@ -1,8 +1,9 @@
 import ContextManager from '@/package-processor/ContextManager';
+import IContextManager from '@/protocols/IContextManager';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('ContextManager', () => {
-  let contextManager: ContextManager;
+  let contextManager: IContextManager;
 
   beforeEach(() => {
     contextManager = new ContextManager();
