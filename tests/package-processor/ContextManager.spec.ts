@@ -76,6 +76,17 @@ describe('ContextManager', () => {
     });
   });
 
+  describe('hasCommand', () => {
+    it('should return true if command exists', () => {
+      contextManager.registerCommand('testCommand', () => {});
+      expect(contextManager.hasCommand('testCommand')).toBe(true);
+    });
+
+    it('should return false if command does not exist', () => {
+      expect(contextManager.hasCommand('testCommand')).toBe(false);
+    });
+  });
+
   describe('setCurrentPackage', () => {
     it('should set the current package', () => {
       contextManager.setCurrentPackage('packageA');

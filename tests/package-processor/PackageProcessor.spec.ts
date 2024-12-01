@@ -1,18 +1,13 @@
 import { PackageBlock } from '@/package-processor/PackageBlock';
 import PackageProcessor from '@/package-processor/PackageProcessor';
+import IContextManager from '@/protocols/IContextManager';
 import { describe, expect, it, vi } from 'vitest';
 
 describe('PackageProcessor', () => {
   const mockContextManager = {
-    setLocalVariable: vi.fn(),
-    setExportedVariable: vi.fn(),
-    exportVariable: vi.fn(),
-    getVariable: vi.fn(),
-    registerCommand: vi.fn(),
-    getCommand: vi.fn(),
     setCurrentPackage: vi.fn(),
     getCurrentPackage: vi.fn(),
-  };
+  } as unknown as IContextManager;
 
   const mockCommandExecutor = {
     execute: vi.fn(),

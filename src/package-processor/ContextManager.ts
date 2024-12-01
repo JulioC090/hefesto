@@ -1,10 +1,10 @@
+import { Command } from '@/package-processor/Command';
 import IContextManager from '@/protocols/IContextManager';
 
 export default class ContextManager implements IContextManager {
   private localVariables: { [key: string]: number | string } = {};
   private exportedVariables: { [key: string]: number | string } = {};
-  private exportedCommands: { [key: string]: (...args: string[]) => unknown } =
-    {};
+  private exportedCommands: { [key: string]: Command } = {};
   private currentPackage: string = '';
   private registeredPackages: Array<string> = [];
 
@@ -39,16 +39,20 @@ export default class ContextManager implements IContextManager {
     throw new Error(`Variable "${key}" does not exist.`);
   }
 
-  registerCommand(key: string, fn: (...args: string[]) => unknown) {
+  registerCommand(key: string, fn: Command) {
     this.exportedCommands[key] = fn;
   }
 
-  getCommand(key: string): (...args: string[]) => unknown {
+  getCommand(key: string): Command {
     if (key in this.exportedCommands) {
       return this.exportedCommands[key];
     }
 
     throw new Error(`Command "${key}" does not exist.`);
+  }
+
+  hasCommand(key: string): boolean {
+    return key in this.exportedCommands;
   }
 
   setCurrentPackage(packageName: string) {
