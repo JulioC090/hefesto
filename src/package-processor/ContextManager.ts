@@ -8,7 +8,7 @@ export default class ContextManager implements IContextManager {
   private currentPackage: string = '';
   private registeredPackages: Array<string> = [];
 
-  constructor() {}
+  constructor(public props: { source: string; destination: string }) {}
 
   setLocalVariable(key: string, value: string | number) {
     this.localVariables[key] = value;

@@ -1,6 +1,10 @@
 import { Command } from '@/package-processor/Command';
 
 export default interface IContextManager {
+  props: {
+    source: string;
+    destination: string;
+  };
   setLocalVariable(key: string, value: string | number): void;
   setExportedVariable(key: string, value: string | number): void;
   exportVariable(key: string): void;

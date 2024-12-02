@@ -6,7 +6,10 @@ describe('ContextManager', () => {
   let contextManager: IContextManager;
 
   beforeEach(() => {
-    contextManager = new ContextManager();
+    contextManager = new ContextManager({
+      source: 'source',
+      destination: 'destination',
+    });
   });
 
   describe('setLocalVariable', () => {
