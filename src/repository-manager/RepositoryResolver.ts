@@ -1,4 +1,4 @@
-import IFileReader from '@/protocols/IFileReader';
+import IFileManager from '@/protocols/IFileManager';
 import IRepositoryExtractor from '@/protocols/IRepositoryExtractor';
 import IRepositoryResolver from '@/protocols/IRepositoryResolver';
 import isGitHubRepoAvailable from '@/repository-manager/isGitHubRepoAvailable';
@@ -9,7 +9,7 @@ import path from 'node:path';
 export default class RepositoryResolver implements IRepositoryResolver {
   constructor(
     private repositoryExtractor: IRepositoryExtractor,
-    private fileReader: IFileReader,
+    private fileManager: IFileManager,
   ) {}
 
   async resolve(repository: string): Promise<Repository | null> {
@@ -32,7 +32,7 @@ export default class RepositoryResolver implements IRepositoryResolver {
     try {
       const mapFilePath = path.join(repositoryPath, 'hefesto.map.json');
 
-      const mapFileContent = await this.fileReader.read(mapFilePath);
+      const mapFileContent = await this.fileManager.read(mapFilePath);
       const repositoryData: Repository = JSON.parse(mapFileContent);
 
       return repositoryData;

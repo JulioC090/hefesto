@@ -1,4 +1,4 @@
-import IFileReader from '@/protocols/IFileReader';
+import IFileManager from '@/protocols/IFileManager';
 import IRepositoryExtractor from '@/protocols/IRepositoryExtractor';
 import IRepositoryResolver from '@/protocols/IRepositoryResolver';
 import isGitHubRepoAvailable from '@/repository-manager/isGitHubRepoAvailable';
@@ -16,14 +16,14 @@ describe('RepositoryResolver', () => {
     extract: vi.fn(),
   };
 
-  const mockFileReader: IFileReader = {
+  const mockFileManager = {
     read: vi.fn(),
-  };
+  } as unknown as IFileManager;
 
   let resolver: IRepositoryResolver;
 
   beforeEach(() => {
-    resolver = new RepositoryResolver(mockExtractor, mockFileReader);
+    resolver = new RepositoryResolver(mockExtractor, mockFileManager);
   });
 
   it('should return null if repository is invalid', async () => {
@@ -53,7 +53,7 @@ describe('RepositoryResolver', () => {
       packages: ['package1'],
     };
 
-    vi.mocked(mockFileReader.read).mockResolvedValue(
+    vi.mocked(mockFileManager.read).mockResolvedValue(
       JSON.stringify(mockRepositoryData),
     );
 
@@ -63,7 +63,7 @@ describe('RepositoryResolver', () => {
 
   it('should handle invalid .map file', async () => {
     vi.mocked(isUrl).mockReturnValue(false);
-    vi.mocked(mockFileReader.read).mockRejectedValue(
+    vi.mocked(mockFileManager.read).mockRejectedValue(
       new Error('File not found'),
     );
 
