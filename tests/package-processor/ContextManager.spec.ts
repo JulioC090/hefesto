@@ -65,11 +65,11 @@ describe('ContextManager', () => {
   });
 
   describe('registerCommand', () => {
-    it('should register and retrieve a command', () => {
-      const mockCommand = () => 'executed';
+    it('should register and retrieve a command', async () => {
+      const mockCommand = async () => 'executed';
       contextManager.registerCommand('testCommand', mockCommand);
       const command = contextManager.getCommand('testCommand');
-      expect(command()).toBe('executed');
+      expect(await command()).toBe('executed');
     });
 
     it('should throw an error if command does not exist', () => {
@@ -81,7 +81,7 @@ describe('ContextManager', () => {
 
   describe('hasCommand', () => {
     it('should return true if command exists', () => {
-      contextManager.registerCommand('testCommand', () => {});
+      contextManager.registerCommand('testCommand', async () => {});
       expect(contextManager.hasCommand('testCommand')).toBe(true);
     });
 

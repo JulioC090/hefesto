@@ -1,1 +1,1 @@
-export type Command = (args?: Array<string>) => unknown;
+export type Command = (args?: Array<string>) => Promise<unknown>;
